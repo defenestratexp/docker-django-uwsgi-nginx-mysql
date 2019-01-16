@@ -25,13 +25,14 @@ SECRET_KEY = '207p722dreag@to!rrisniyhstyrx3jgi9+5b9tf-#k22vmv82'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     #'debug_toolbar',
+    'polls',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
