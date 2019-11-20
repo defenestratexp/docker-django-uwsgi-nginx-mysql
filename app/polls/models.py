@@ -1,5 +1,10 @@
 from django.db import models
 
+# For the date and timezone stuff to work
+import datetime
+from django.utils import timezone
+
+
 # Create your models here.
 
 # These come from the django polls tutoria
@@ -12,6 +17,10 @@ class Question(models.Model):
 	# This method allows str translation of the object
 	def __str__(self):
 		return self.question_text
+
+	# See if the item was created in the last day
+	def was_published_recent(self):
+		return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Choice(models.Model):
 	question = models.ForeignKey(Question, on_delete=models.CASCADE)
