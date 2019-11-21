@@ -19,8 +19,9 @@ class Question(models.Model):
 		return self.question_text
 
 	# See if the item was created in the last day
-	def was_published_recent(self):
-		return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+	def was_published_recently(self):
+		now = timezone.now()
+		return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 class Choice(models.Model):
 	question = models.ForeignKey(Question, on_delete=models.CASCADE)
