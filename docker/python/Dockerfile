@@ -9,12 +9,12 @@ RUN apk update \
     && apk add zlib-dev \
     && apk add mariadb-dev \
     && apk add libffi-dev
-
 # install pypi packages
 COPY requirements.txt /requirements.txt
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt \
     && rm /usr/bin/mysql*
 COPY uwsgi.ini /uwsgi.ini
+COPY aws_config /aws_config
 
 CMD ["uwsgi", "--ini", "/uwsgi.ini"]
